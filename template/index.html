@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Taxi Allocation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body onload="OnLoadCall()">
+    <div class="total-taxi-input">
+        <div class="main_btns">
+            <button id="test" onclick="bruteforce_test()">Test Site</button>
+            {% csrf_token %}
+            <label for="total_taxi">Total Taxi:
+                <input type="number" id="total_taxi" name="total_taxi" min="1" value="{{request.session.taxi_count}}"/>
+            </label>
+            <input type="submit" id="initiate" value="Initiate"/>
+            <input type="button" id="clear_db" value="Reset"/>
+        </div>
+    </div>
+    <section class="input-container">
+        <div class="book-taxi">
+            <div>
+                <label for="customer_id">Customer ID:</label>
+                <input type="text" id="customer_id" name="customer_id" placeholder="Customer ID"/>
+            </div>
+            <div>
+                <label for="pickup_point">
+                    Pickup Point:
+                </label>
+                <select name="pickup_point" id="pickup_point">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                </select>
+            </div>
+            <div>
+                <label for="drop_point">
+                    Drop Point:
+                </label>
+                <select name="drop_point" id="drop_point">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                </select>
+            </div>
+            <div>
+                <label for="pickup_time">
+                    Pickup Time:
+                </label>
+                <input type="number" id="pickup_time" name="pickup_time" min="1" max="24">                
+            </div>
+            <input type="submit" id="book_taxi" value="Book Taxi"/>
+        </div>
+        <div class="sort-bookings">
+            <form action="" method="post">
+                <input type="text" name="search" id="search" oninput="SearchBookingData(this.value)" placeholder="Search..."/>
+                <select name="taxi_id" id="taxi_id" onchange="SelectedTaxi(this.value)">
+                    <option value="all" selected>All Taxi</option>
+                </select>
+            </form>
+        </div>
+    </section>
+
+    <section class="table-container">
+        <span id="totalsum"></span>
+        <table>
+            <thead>
+                <tr>
+                    <th>I.No</th>
+                    <th>Alocated Taxi</th>
+                    <th>Customer ID</th>
+                    <th>Pickup Point</th>
+                    <th>Drop Point</th>
+                    <th>Pickup Time</th>
+                    <th>Drop Time</th>
+                    <th>Pay</th>
+                </tr>
+            </thead>
+            <tbody style="overflow-y: auto;" id="booking-data">
+
+            </tbody>
+        </table>
+    </section>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

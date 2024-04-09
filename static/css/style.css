@@ -1,0 +1,95 @@
+
+body{
+    overflow: hidden;
+    background-color: rgb(21, 21, 21);
+    color: snow;
+    height: 100vh;
+    font-family:cursive;
+    transition: 1s;
+}
+.main_btns{
+    position: fixed;
+    display: flex;
+    right: 2%;
+    width: 30%;
+    justify-content: space-between;
+    margin-top: 0%;
+}
+input{
+    width: fit-content;
+    border: none;
+    border-bottom: 1px solid snow;
+    background-color: rgb(21, 21, 21);
+    color: snow;
+    font-size: 15px;
+}
+input[type='number']{
+    width: 50px;
+    font-size: 15px;
+}
+option{
+    background-color: black;
+    color: snow;
+}
+input[type='button'],input[type='submit']{
+    border: 1px solid snow;
+    padding: 5px 10px;
+    border-radius: 5px;
+    right: 0;
+    display: flex;
+}
+select{
+    font-size: 15px;
+}
+button{
+    font-size: 15px;
+}
+.book-taxi{
+    display: grid;
+    min-width: 40%;
+    padding: 2%;
+}
+.book-taxi div{
+    padding-bottom: 10px;
+}
+.book-taxi #book_taxi{
+    margin-left: 15%;
+}
+.table-container{
+    margin-top: 2%;
+    height: 58vh;
+    width: 100%;
+    overflow-y: auto;
+}
+table{
+    margin-top: 2%;
+    width: 100%;
+    border: 1px solid snow;
+    border-collapse: collapse;
+}
+th,td{
+    border: 1px solid snow;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid snow;
+    border-collapse: collapse;
+}
+table thead,tr th{
+    border: 5px solid snow;
+    top:0;
+    z-index: 999;
+    background-color: black;
+    position: sticky;
+}
+.input-container{
+    display: flex;
+    justify-content: space-around;
+}
+.sort-bookings{
+    margin-top: 10%;
+}
+#totalsum{
+    position: fixed;
+    right: 2%;
+    top: 32%;
+}
